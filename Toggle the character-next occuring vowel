@@ -1,0 +1,92 @@
+/*Question
+The program must accept a string S containing only alphabets as the input. For each
+consonant in S, the program must toggle the case of the next occurring vowel. If there is no vowel occurring after the consonant, then the case of the consonant must be toggled. Finally, the program must print the modified string S as the output.
+Boundary Condition(s):
+1 <= Length of S <= 10^5
+Input Format:
+The first line contains S.
+Output Format:
+The first line contains the modified string value.
+Example Input/Output 1:
+Input:
+WATER
+Output:
+WaTer
+Explanation:
+The 1st consonant in the string "W TER" is 'W' and the next vowel of 'W' is 'A'. So the case of 'A' is toggled.
+Now the string becomes "WATER"
+The 2nd consonant in the string "WAT R" is 'T' and the next vowel of 'T' is 'E'. So the case of 'E' is toggled.
+Now the string becomes "WaTeR"
+The 3rd consonant in the string "WATER" is 'R' and there is no vowel after 'R'. So the case of 'R' is toggled.
+Now the string becomes "Water"
+Hence the output is WaTer
+Example Input/Output 2:
+Input: apple
+Output: applE
+Example Input/Output 2:
+Input: HAPpiNESs
+Output: HaPpINeSs
+*/
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+//A function defines whether a character is a vowel. 
+//rturn 0 if it is vowel and return 1 if it is not a vowel
+int is_vowel(char c) {
+    c = tolower(c);
+    return (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u');
+}
+
+int main() {
+    char s[1001];
+    scanf("%s", s);
+    int i = 0, len = strlen(s);
+//In the main loop, if a consonant is followed by a vowel, the case of the vowel is toggled. Printed modified string.
+    for (i = 0; i < len; i++) {
+        if (!is_vowel(s[i]) && is_vowel(s[i + 1])) {
+            if (isupper(s[i + 1])) {
+                s[i + 1] = tolower(s[i + 1]);
+            } else {
+                s[i + 1] = toupper(s[i + 1]);
+            }
+        }
+    }
+
+    printf("%s", s);
+
+    return 0;
+}
+/***************************************************************************************
+Alternate Solution:
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>//to import islower(),isupper() functions
+int main() {
+    char s[1001];
+    scanf("%s", s);  // Read the input string
+    int len = strlen(s);
+    //This loop find whether ch is consonants or using their lowercase form in the input string.
+    for (int i = 0; i < len; i++) {
+        char ch = tolower(s[i]);//if we dont provide this then we have check for both uppercase and lowercase
+
+        if (ch != 'a' && ch != 'e' && ch != 'i' && ch != 'o' && ch != 'u')
+{
+  //Inner loop finds next vowel after current consonant from i + 1 to end.
+            for (int j = i + 1; j < len; j++)
+
+{
+ //Inner loop converts characters to lowercase and toggles vowel caseif ch1 is a vowel
+                char ch1 = tolower(s[j]);
+                
+                if (ch1 == 'a' || ch1 == 'e' || ch1 == 'i' || ch1 == 'o' || ch1 == 'u') {
+                    s[j] = (isupper(s[j])) ? tolower(s[j]) : toupper(s[j]);
+                    break; // Break the inner loop after toggling the case
+                }
+            }
+        }
+    }
+*/
+    printf("%s", s);  // Print the modified string
+
+    return 0;
+}
