@@ -1,0 +1,78 @@
+/*
+QUESTION:
+Count of common characters in two strings
+Two string values S1 and S2 are passed as input.
+The program must print the count of common characters in the strings S1 and S2. 
+Assume the alphabets in S1 and S2 will be in lower case.
+
+Input Format:
+First line will contain the value of string S1
+Second line will contain the value of string S2
+
+Output Format:
+First line will contain the count of common alphabets.
+
+Boundary Conditions:
+Length of S1 and S2 will be from 3 to 100.
+
+Sample Input/Output:
+
+Example 1:
+Input:
+china
+india
+
+Output:
+3
+
+Explanation:
+The common characters are i,n,a
+
+Example 2:
+Input:
+energy
+every
+
+Output:
+3
+
+Explanation:
+The common characters are e,r,y
+*****************************************************************************
+Solution:
+*/
+#include<stdio.h>
+#include<string.h>
+
+int main() {
+    char s1[1001], s2[1001];
+    scanf("%s %s", s1, s2);
+    
+    int count = 0;
+    int arr[26] = {0}, arr1[26] = {0};
+    /*This line declares an integer array named 'arr' and 'arr1' with a size of 26. 
+      The size 26 is used because there are 26 lowercase letters in the English alphabet. 
+      The {0} initializes all elements of the array to zero. This step ensures that the array is initialized with the correct size and all frequency counts are initially set to zero.
+    */
+    for (int i = 0; s1[i] != '\0'; i++) {
+        arr[s1[i] - 'a']++;
+    /*s1[i] - 'a' calculates the index in the array arr corresponding to the current character in s1.
+      For example, if s1[i] is the letter 'c', then s1[i] - 'a' would be 2 (because 'c' is the third letter in the alphabet and 'a' is the first letter).
+    */
+    /*arr[s1[i] - 'a']++; increments the frequency count of the character represented by the calculated index in the array arr. 
+      It's equivalent to saying "increase the count of the character at the index corresponding to the current character in s1."
+    */
+    }
+    for (int i = 0; s2[i] != '\0'; i++) {
+        arr1[s2[i] - 'a']++;
+    }
+    for (int i = 0; i < 26; i++) {
+        if (arr[i] > 0 && arr1[i] > 0) {
+            count++;
+        }
+    }
+    
+    printf("%d", count);
+
+    return 0;
+}
