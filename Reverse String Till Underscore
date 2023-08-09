@@ -1,0 +1,59 @@
+/*Question:
+String S is passed as the input to the program. S may or may not have a single underscore embedded in it. The program must reverse the String S till the first underscore and print it as the output.
+Input Format: The first line contains S.
+Output Format: The first line contains the string S modified based on the given conditions.
+Boundary Conditions: Length of S is from 3 to 100.
+Example Input/Output 1:
+Input:
+abcd_pqrs
+Output:
+dcba_pqrs
+Example Input/Output 2:
+Input:
+_kilo
+Output:
+_kilo
+Input:
+spam5_kilo
+Output:
+5maps_kilo	
+Input:
+lafholaschjc as asjaskldasldas d askldjaskldjapowwq 76767
+Output:
+76767 qwwopajdlksajdlksa d sadlsadlksajsa sa cjhcsalohfal
+*/
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char s[101];
+    scanf("%[^\n]", s);
+
+    int i = 0, index = -1;
+
+    // Find the index of the underscore
+    while (s[i] != '\0') {
+        if (s[i] == '_') {
+            index = i;
+            break;
+        }
+        i++;
+    }
+
+    // If no underscore is found, reverse the entire string
+    if (index == -1) {
+        index = strlen(s);
+    }
+
+    // Reverse the substring before the underscore
+    for (i = 0; i < index / 2; i++) {
+        char temp = s[i];
+        s[i] = s[index - i - 1];
+        s[index - i - 1] = temp;
+    }
+
+    // Print the modified string
+    printf("%s\t", s);
+
+    return 0;
+}
