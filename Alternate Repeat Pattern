@@ -1,0 +1,46 @@
+/*Question:
+Alternate Repeat Pattern
+The program must accept a positive even integer N as the input. The program must print the desired pattern as shown in the Example Input/Output section.
+Boundary Condition(s):
+2 <= N <= 100
+Input Format:
+The first line contains the positive even integer N.
+Output Format:
+The lines containing the desired pattern as shown in the Example Input/Output section.
+Example Input/Output 1:
+Input:
+6
+Output: 
+1666666
+2255555
+3334444
+Example Input/Output 2: Input:
+4
+Output: 14444
+22333
+*/
+//Solution
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+int n,n1;
+scanf("%d",&n);
+n1=n;//if we didn't declare n1 while decrementing if we decrement n then in loop also n value will be changed
+for(int i=1;i<=n/2;i++)//n/2 from the given o/p it is obsered the no of rows is half of the given number and column is n+1 as per o/p
+{
+    for(int j=1;j<=n+1;j++)
+    {
+        if(i==j || j<=i)//the value 1,2...are printed until i and j are equal and the before values are also same so so the col must be less than rows
+        {
+            printf("%d",i);
+        }
+        else
+        {
+            printf("%d",n1);
+        }
+    }
+    n1--;
+    printf("\n");
+}
+}
