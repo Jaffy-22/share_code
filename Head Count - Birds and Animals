@@ -1,0 +1,36 @@
+/*Question
+Head Count - Birds and Animals
+In a zoo there are some birds and animals. All birds have two legs and all animals have four legs.
+Given the head count and leg count of both birds and animals taken together, the program must print the head count of birds and animals separated by a space as output.
+Input Format:
+First line will contain the integer value H representing the head count of both birds and animals taken together.
+Second line will contain the integer value L representing the leg count of both birds and animals taken together.
+Output Format:
+First line will contain the integer values of the head count of birds and animals separated by a space.
+Constraints:
+0 < H < 1000
+1 < L < 2000
+Sample Input/Output:
+Example 1: Input:
+27
+84
+Output:
+12 15
+*/
+#include <stdio.h>
+
+int main() {
+    int hc, lc;
+    scanf("%d%d", &hc, &lc);
+    
+    // Calculate the number of animals (a) using the given equations
+    int a = lc/ 2 - hc;
+
+    // Calculate the number of birds (b) using the relationship: h = a + b
+    int b = hc - a;
+
+    // Print the number of birds and animals
+    printf("%d %d", b, a);
+    
+    return 0;
+}
