@@ -1,0 +1,91 @@
+/*Questions:
+Simple Calculator Command
+A string S is passed as input. S will contain two integer values separated by one of these alphabets - A, S, M, D where
+- A or a is for addition
+S or s is for subtraction
+- M or m is for multiplication
+- D or d is for division
+The program must perform the necessary operation and print the result as the output. (Ignore
+any floating point values just print the integer result.)
+Input Format:
+The first line contains S.
+Output Format:
+The first line contains the resulting integer value.
+Boundary Conditions:
+The length of S is from 3 to 100.
+Example Input/Output 1:
+Input:
+5A11
+Output:
+16
+Example Input/Output 2:
+Input: 120D6
+Output:
+20
+Example Input/Output 3:
+Input: 1405d10
+Output:
+140
+Input:
+-90s-109
+Expected Output:
+19
+*/
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+    char s[101];
+    scanf("%s", s);
+    int len = strlen(s);
+    int i = 0, index = 0;
+    //Finding the index of the the operator
+    while (s[i] >= '0' && s[i] <= '9' || s[i] == '-')
+    {
+        i++;
+        index = i;
+    }
+
+    int num1 = 0, num2 = 0;
+    //Finding num before operator
+    for (i = 0; i < index; i++)
+    {
+        if (s[i] == '-')
+        {
+            continue;
+        }
+        else
+        {
+            num1 = num1 * 10 + (s[i] - '0');
+        }
+    }
+    //Finding num after operator
+    for (i = index + 1; i < len; i++)
+    {
+        if (s[i] == '-')
+        continue;
+        else
+        num2 = num2 * 10 + (s[i] - '0');
+    }
+
+    char operator = s[index]; // Store the operator
+    //conditions
+    if (operator == 'A' || operator == 'a')
+    {
+        printf("%d\n", num1 + num2);
+    }
+    else if (operator == 'S' || operator == 's')
+    {
+        printf("%d\n",abs(num1 - num2));
+    }
+    else if (operator == 'M' || operator == 'm')
+    {
+        printf("%d\n", num1 * num2);
+    }
+    else
+    {
+        printf("%d\n", num1 / num2);
+    }
+
+    return 0;
+}
