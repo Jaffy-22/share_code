@@ -1,0 +1,54 @@
+/*Question:
+String - Decimal
+The program must accept a string S containing only a and b as the input. The program must form the binary represention of an integer X by replacing a by 1 and b by 0 in the string S. Then the program must print the value of X as the output.
+Boundary Condition(s):
+1 <= Length of S <= 30
+Input Format:
+The first line contains the string S.
+Output Format:
+The first line contains the integer X.
+Example Input/Output 1:
+Input:
+aabba
+Output: 25
+Explanation:
+After replacing all the occurrences of a by 1 and b by 0, the string becomes 11001. So the decimal equivalent of (11001) is 25.
+Hence the output is 25
+Example Input/Output 2:
+Input:
+abbaaba
+Output:
+77
+*/
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+int main()
+{
+    char s[101];
+    scanf("%s", s);
+    int len = strlen(s);
+    int i = 0, arr[len];
+    for(i=0;i<len;i++)
+    {
+        if(s[i]=='a' )
+        arr[i]=1;
+        else
+        arr[i]=0;
+    }
+    int decimal = 0;
+    for (int i = len - 1; i >= 0; i--) {
+        if (arr[i] == 1) {
+            int power = len - 1 - i;
+//power = length - 1 - i calculates the exponent for the power of 2 corresponding to the bit's position. 
+//This formula ensures that the leftmost bit has the highest power, and the rightmost bit has the lowest power.and we cal from lowest.
+//The rightmost bit has the highest positional value (2^0), and the leftmost bit has the lowest positional value (2^(length - 1)).
+            decimal += pow(2, power);
+        }
+    }
+
+    printf("%d\n", decimal);
+    return 0;
+}
+
+
