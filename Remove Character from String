@@ -1,0 +1,41 @@
+/*Question:
+Remove Character from String
+The program must accept a string $ and a character CH as the input. The program must remove all the occurrences of CH in the string S and print it as the output.
+Boundary Condition(s):
+2 <= Length of S <= 100
+Example Input/Output 1:
+Input: icecream
+C
+Output: ieream
+Explanation:
+The character has occurred 2 times in the string "i e ream". So they are removed from the
+string and printed as the output.
+Example Input/Output 2: Input:
+greatappleshouldbeanapple
+P
+Output:
+greataleshouldbeanale
+*/
+#include <stdio.h>
+#include <string.h>
+int main() {
+    char s[100];
+    char c;
+    scanf("%s", s);
+    scanf(" %c", &c); 
+    int len = strlen(s);
+    int i, j;
+    
+    for (i = j = 0; i < len; i++)
+        {
+        if (s[i] != c) {
+            s[j++] = s[i];
+        }
+/*In the expression s[j++], the value of j is used before being incremented by 1.
+For instance, if j is initially 0, s[j++] accesses s[0] and then increments j to 1.
+This accesses the first character of the string and advances j to the next position.*/
+    }
+    s[j] = '\0';
+    printf("%s",s);
+    return 0;
+}
