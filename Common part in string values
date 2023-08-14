@@ -1,0 +1,58 @@
+/*Question
+Common part in string values
+Two string values S1 and S2 are passed as input. The last portion of S1 will be the first portion of S2. The program must print this common part in S1 and S2.
+Input Format:
+The first line contains $1.
+The second line contains S2.
+Output Format:
+The first line contains the common part.
+Boundary Conditions:
+Length of S1 and S2 will be from 3 to
+100.
+Example Input/Output 1:
+Input:
+mayday
+daybreak
+Output:
+day
+Example Input/Output 2:
+Input:
+bridge
+gear
+Output:
+ge
+Input:
+Georgeflee
+fleeceblanket
+Expected Output:
+flee
+*/
+#include <stdio.h>
+#include <string.h>
+int main() {
+    char s1[101], s2[101];
+    scanf("%s", s1);  // Read the first string
+    scanf("%s", s2);  // Read the second string
+    
+    int len1 = strlen(s1);  // Calculate the length of the first string
+    int len2 = strlen(s2);  // Calculate the length of the second string
+    
+    int i, j = 0, count = 0;
+    
+    // Count the number of characters that match between s1 and s2
+    for (i = 0; i < len1; i++) {
+        if (s1[i] == s2[j]) {
+            count++;  // Increment count for each matching character
+            j++;      // Move to the next character in s2
+        }
+    }
+    
+    // Print the common part based on the count of matching characters
+    for (i = 0; i < count; i++) {
+        printf("%c", s2[i]);  // Print the characters of s2 that match with s1
+    }
+    
+    printf("\n");  // Print a newline to separate output lines
+    
+    return 0;
+}
