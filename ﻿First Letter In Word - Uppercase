@@ -1,0 +1,38 @@
+/*Question
+﻿First Letter In Word - Uppercase
+A string value S is passed as the input. The program must print the first letter of each word in S in upper case.
+Input Format:
+First line will contain the string value S
+Output Format:
+First line will contain the string value with the first letter of each word in S in upper case.
+Boundary Conditions: Length of S is from 5 to 500
+Example Input/Output 1:
+Input:
+She is
+happy.
+Output:
+She Is
+Happy.
+Example Input/Output 2:
+Input:
+joIN THE ParTY
+Output:
+JOIN THE ParTY
+*/
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>  // Include this header for the toupper function
+int main() {
+    char s[1001];
+    scanf("%[^\n]", s);  // Read the input string until a newline
+    // Iterate through the characters of the string
+    for (int i = 0; i < strlen(s); i++) {
+        // If a space is encountered or it's the first character of the string, convert and print the next character to uppercase
+        if (i==0||s[i - 1] == ' ') {
+            printf("%c", toupper(s[i]));
+        } else {
+            printf("%c", s[i]);  // Print the character as is
+        }
+    }
+    return 0;
+}
