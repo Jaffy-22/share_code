@@ -1,0 +1,44 @@
+/*Question
+﻿First Repeating Character
+A string S is passed as the input. S has at least one repeating character. The program must print the first repeating character C.
+Input Format:
+The first line contains S.
+Output Format:
+The first line contains C.
+Boundary Conditions:
+Length of S will be from 3 to 100.
+Example Input/Output 1:
+Input:
+abcdexyzbwqpoolj
+Output:
+b
+﻿Input:
+k+axjAK_S jasYDQWD08QW #+ UY990
+Expected Output:
++
+*/
+#include<stdio.h>
+#include<stdlib.h>
+#include<ctype.h>
+int main() {
+    char s[101];
+    scanf("%s", s);  // Read a string as input
+    
+    int len = strlen(s);  // Calculate the length of the string
+    
+    int found = 0, i, j;  // Initialize a flag 'found' to indicate if a repeated character is found
+    
+    for(int i = 0; i < len; i++) {
+        for(int j = i + 1; j < len; j++) {
+            if(s[i] == s[j]) {
+                printf("%c", s[i]);  // Print the repeated character
+                found = 1;  // Set the 'found' flag to 1
+                break;  // Exit the inner loop
+            }
+        }
+        if(found == 1)  // If 'found' is 1, exit the outer loop
+            break;
+    }
+    
+    return 0;
+}
