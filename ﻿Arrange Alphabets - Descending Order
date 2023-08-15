@@ -1,0 +1,50 @@
+/*Question
+﻿Arrange Alphabets - Descending Order
+A string S (with only LOWER case alphabets and length from 3 to 100) will be passed as input. The program should print the alphabets in the string in descending order.
+Input Format:
+The first line will contain S.
+Output Format:
+The first line will contain the alphabets
+present in S in descending order.
+Example Input/Output 1:
+Input:
+cake
+Output:
+keca
+Example Input/Output 2:
+Input:
+innovation
+Output:
+vtonia
+﻿Code did not pass the execution
+Input:
+saltlake
+Expected Output:
+tslkea
+*/
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+int main() {
+    char s[101];
+    scanf("%s", s);
+
+    int freq[26] = {0};
+    int i, j;
+
+    // Count the frequency of each lowercase alphabet in the input string
+    for (i = 0; i < strlen(s); i++) {
+        if (islower(s[i]))
+            freq[s[i] - 'a']++;
+    }
+
+    // Print the lowercase alphabets in descending order based on frequency
+    for (i = 25; i >= 0; i--) {
+        if(freq[i]>0)
+            printf("%c", 'a' + i);  // Print the current character
+    }
+
+    printf("\n");  // Print a newline to separate output lines
+
+    return 0;
+}
