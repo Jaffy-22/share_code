@@ -1,0 +1,55 @@
+/*Questions:
+Count the primes in a range.
+Two whole numbers N1 and N2 are passed as input. The program must print the number of primes present between N1 and N2 (the range is inclusive of N1 and N2)
+Input Format:
+First line will contain the value of the first number N1
+Second line will contain the value of the second number N2
+Output Format:
+First line will contain the count of prime numbers between N1 and N2
+Sample Input/Output:
+Example 1:
+Input:
+6142
+6200
+Output: 6
+Explanation:
+The prime numbers within the range 6142 to 6200 are 6143, 6151, 6163, 6173, 6197, 6199
+Example 2:
+Input:
+38
+70
+Output:
+7
+*/
+#include <stdio.h>
+int main() {
+    int n1, n2;
+    scanf("%d %d", &n1, &n2);
+
+    int i, j, flag, count = 0;
+
+    // Loop through the range from n1 to n2 (inclusive)
+    for (i = n1; i <= n2; i++) {
+        // Skip 0, 1, and 2 as they are not considered prime
+        if (i == 1 || i == 0 || i == 2)
+            continue;
+        
+        flag = 1; // Initialize flag as true
+
+        // Check for factors of i in the range 2 to i/2
+        for (j = 2; j <= i / 2; j++) {
+            if (i % j == 0) {
+                flag = 0; // If a factor is found, set flag to false
+                break;    // Break out of the loop as the number is not prime
+            }
+        }
+
+        // If flag is still true, i is a prime number
+        if (flag == 1) {
+            count++;         // Increment the count of prime numbers found
+        }
+    }
+    
+    printf("\nCount: %d", count); // Print the total count of prime numbers
+    return 0;
+}
