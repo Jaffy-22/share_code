@@ -1,0 +1,53 @@
+/*Question
+Concatenate Strings Alphabetically
+Two string values S1 and S2 are passed as the input. The program must concatenate them depending on which string comes first in the alphabetical order.
+Input Format:
+The first line will contain S1.
+The second line will contain S2
+Output Format:
+The first line will contain the concatenated string value.
+Boundary Conditions:
+The length of S1 and S2 is from 3 to 100.
+Example Input/Output 1:
+Input:
+apple
+orange
+Output:
+appleorange
+Example Input/Output 2:
+Input:
+ZOO
+tiger
+Output: tiger zoo
+*/
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+int main() {
+    char s1[101], s2[101]; // Increased size of s1 to accommodate concatenated result
+    scanf("%s %s", s1, s2);
+
+    int n1, n2;
+    if (islower(s1[0])) {
+        n1 = s1[0] - 'a';
+    } else {
+        n1 = s1[0] - 'A';
+    }
+
+    if (islower(s2[0])) {
+        n2 = s2[0] - 'a';
+    } else {
+        n2 = s2[0] - 'A';
+    }
+
+    if (n1 < n2) {
+        strcat(s1, s2); // Concatenate s2 onto s1
+        printf("%s", s1);
+    } else {
+        strcat(s2, s1); // Concatenate s1 onto s2
+        printf("%s", s2);
+    }
+
+    return 0;
+}
