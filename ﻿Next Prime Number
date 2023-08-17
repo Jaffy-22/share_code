@@ -1,0 +1,54 @@
+/*Question
+﻿Next Prime Number
+A number N is passed as the input. The program must print the next immediate prime number.
+Input Format:
+The first line will contain N.
+Output Format:
+The first line will contain the integer value of next immediate prime number.
+Boundary Conditions:
+1 <= N <= 999999
+Example Input/Output 1:
+Input:
+11
+Output:
+13
+Example Input/Output 2:
+Input:
+2
+Output:
+3
+*/
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int n;
+    scanf("%d", &n); // Read the input value
+
+    int is_prime = 1; // Variable to store whether n is prime
+
+    if (n == 1)
+        printf("2"); // Special case: if n is 1, the next prime is 2
+    else {
+        while (1) {
+            is_prime = 1; // Assume n is prime
+            n++; // Increment n to check the next number
+
+            // Check for factors up to the square root of n
+            for (int j = 2; j * j <= n; j++) {
+                if (n % j == 0) {
+                    is_prime = 0; // n is not prime
+                    break;
+                }
+            }
+
+            // If n is prime, print it and exit the loop
+            if (is_prime) {
+                printf("%d", n);
+                break;
+            }
+        }
+    }
+
+    return 0;
+}
