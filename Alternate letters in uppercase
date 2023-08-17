@@ -1,0 +1,46 @@
+/*Question
+Alternate letters in uppercase
+A string S (only alphabets) is passed as input. The printed output should contain alphabets in odd positions in each word in uppercase and alphabets in even positions in each word in lowercase.
+Input Format:
+The first line will contain S.
+Output Format:
+The first line will contain the resultant string value based on the conditions provided.
+Boundary Conditions:
+Length of S is from 3 to 100.
+Example Input/Output 1:
+Input:
+tREE GIVES us fruiTS
+Output:
+Tree Gives Us FrUiTs
+Example Input/Output 2:
+Input:
+FLower is beauTIFUL
+Output:
+Flower Is BeauTiFuL
+*/
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+int main() {
+    char s[101];
+    scanf("%[^\n]", s); // Read input until newline character
+
+    int i, j = 0; // Initialize variable j to keep track of character positions
+
+    // Loop through each character in the input string
+    for (i = 0; i < strlen(s); i++) {
+        if (j % 2 != 0)
+            printf("%c", tolower(s[i])); // Convert to lowercase if position is odd
+        else
+            printf("%c", toupper(s[i])); // Convert to uppercase if position is even
+
+        // Check if the current character is a space
+        if (s[i] == ' ')
+            j = 1; // Reset j to 1 for the next word...
+        else
+            j++; // Increment j for each character, indicating the position
+    }
+
+    return 0;
+}
