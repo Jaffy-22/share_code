@@ -1,0 +1,35 @@
+/*Question
+﻿Decreasing Sequence with Difference Decreasing
+Two integers N and D are passed as input. The program must print the decreasing sequence from N with common difference D. The difference D is decremented by 1 when calculating the values every time. The sequence is printed until D becomes zero.
+Boundary Condition(s):
+2 <= N <= 9999999
+1 <= D <= 9999999
+Input Format:
+The first line contains N and D separated by space(s).
+Output Format:
+The first line contains integers separated by a space.
+Example Input/Output 1:
+Input:
+205
+Output:
+15 11 8 65
+﻿Example Input/Output 2:
+Input:
+126
+Output:
+61-3 -6 -8 -9
+*/
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+int n,d;
+scanf("%d %d",&n,&d);
+int i,j=d;
+int c=0;
+for(i=n-d; i!=d-1 && j>0 ;i=i-j)
+{
+    printf("%d ",i);
+    j--;
+}
+}
