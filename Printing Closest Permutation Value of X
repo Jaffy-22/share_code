@@ -1,0 +1,42 @@
+/*
+Printing minimum Permutation Value
+i/p:
+54
+60
+o/p:
+54
+*/
+#include <stdio.h>
+#include <string.h>
+int max=INT_MAX,z=0;
+void swap(char s[], int i, int j) {
+    char temp = s[i];
+    s[i] = s[j];
+    s[j] = temp;
+}
+
+void per(char s[], int l, int r) {
+    if (l == r - 1) {
+        int curr=atoi(s);
+	int close=abs(s-x);
+	if(max>close)
+	close=cur;
+        return;
+    }
+
+    for (int i = l; i < r; i++) {
+        swap(s, l, i);
+        per(s, l + 1, r);
+        swap(s, l, i);
+    }
+}
+
+int main() {
+    char s[1000];
+    int x;
+    scanf("%s %d", s,&x);
+    int l = 0, r = strlen(s);
+    per(s,x, l, r);
+    return 0;
+}
+
