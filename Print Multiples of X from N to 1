@@ -1,0 +1,25 @@
+/*Print Multiples of X from N to 1
+The program must accept two integers N and X as the input. The program must print the multiples of X from N to 1 as the output.
+Example Input/Output 1:
+Input:
+102
+Output:
+10 8 6 4 2
+Example Input/Output 2:
+Input:
+80 7
+Output:
+77 70 63 56 49 42 35 28 21 14 7
+*/
+#include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+int n,x;
+scanf("%d %d",&n,&x);
+for(int i=n;i>=1;i--)
+{
+if(i%x==0)
+printf("%d ",i);
+}
+}
